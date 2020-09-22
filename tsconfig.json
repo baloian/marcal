@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "declaration": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "lib": ["ES2020"],
+    "strictNullChecks": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
+
