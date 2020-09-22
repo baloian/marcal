@@ -3,7 +3,9 @@
 **MarCal** is a `TypeScript` library which provides market calendar and
 trading hours for trading applications.
 
-For now, **MarCal** provides only New York Stock Exchange (NYSE) calendar.
+
+### Supported markets
+For now, **MarCal** supports only New York Stock Exchange (NYSE) calendar from 2020 to 2023.
 
 
 ### How to Install?
@@ -13,15 +15,28 @@ npm i marcal
 
 ### How to Use?
 ```javascript
-import MarCal from 'marcal';
+import MarCal from './marcal';
 
-const marcal = new MarCal();
+const mar_cal = new MarCal();
+
+const is_nyse_open = mar_cal.isMarketOpen();
+if (is_nyse_open) {
+  console.log('NYSE is open')
+} else {
+  console.log('NYSE is closed')
+}
 ```
 
 ### MarCal Public Methods
-
-
-### Example
+```javascript
+// Method checks if the given market is open or closed.
+//
+// Arguments:
+// -market: Market name. By default it is set to 'nyse'.
+//
+// Returns true if market open, otherwise false.
+isMarketOpen(market)
+```
 
 
 ### Contributions
