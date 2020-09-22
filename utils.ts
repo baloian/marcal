@@ -1,4 +1,4 @@
-import moment_tz from 'moment-timezone';
+import moment_timezone from 'moment-timezone';
 import moment from 'moment';
 import { nyse_holidays } from './markets/nyse';
 
@@ -22,7 +22,7 @@ export function hasKey(object: object, key: string) {
 // The New York Stock Exchange is open between 9:30am - 4:00pm from Monday
 // to Friday in New York time, inless it is not a holiday day.
 export function isNYSEOpen() {
-  const ny_time = moment(moment_tz(moment(), 'America/New_York'));
+  const ny_time = moment_timezone().tz('America/New_York');
   const week_day = ny_time.weekday();
   if (week_day === 6 || week_day === 7) return false;
 

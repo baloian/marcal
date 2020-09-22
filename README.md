@@ -15,7 +15,7 @@ npm i marcal
 
 ### How to Use?
 ```javascript
-import MarCal from './marcal';
+import MarCal from 'marcal';
 
 const mar_cal = new MarCal();
 
