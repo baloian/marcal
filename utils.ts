@@ -23,8 +23,8 @@ export function hasKey(object: object, key: string) {
 // to Friday in New York time, inless it is not a holiday day.
 export function isNYSEOpen() {
   const ny_time = moment_timezone().tz('America/New_York');
-  const week_day = ny_time.weekday();
-  if (week_day === 6 || week_day === 7) return false;
+  const week_day = ny_time.day();
+  if (week_day === 0 || week_day === 6) return false;
 
   if (isHoliday(ny_time)) return false;
 
