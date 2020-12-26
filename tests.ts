@@ -8,3 +8,8 @@ if (is_nyse_open) {
 } else {
   console.log('NYSE is closed')
 }
+
+const is_holiday = mar_cal.isHolidayOrWeekend();
+if (is_holiday) {
+  console.log('Today is holiday or weekend');
+}

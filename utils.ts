@@ -37,7 +37,7 @@ export function isNYSEOpen() {
 }
 
 
-function isHoliday(current_time: any, market: string = 'nyse') {
+export function isHoliday(current_time: any, market: string = 'nyse') {
   let holiday_dic = {};
   switch (market) {
     case 'nyse':
