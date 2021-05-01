@@ -111,6 +111,16 @@ class MarCal {
     if (ny_time >= open_time && ny_time < close_time) return true;
     return false;
   }
+
+
+  isTimeInCoreThreadinInterval(now: any) {
+    const curr_time = moment(now).tz('America/New_York');
+    const ny_time = moment_timezone().tz('America/New_York');
+    const open_time = moment(ny_time).set('hour', 9).set('minute', 30).set('second', 0);
+    const close_time = moment(ny_time).set('hour', 16).set('minute', 0).set('second', 0);
+    if (curr_time >= open_time && curr_time < close_time) return true;
+    return false;
+  }
 }
 
 export default MarCal;
