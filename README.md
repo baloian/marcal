@@ -8,18 +8,18 @@ trading hours for trading applications.
 For now, **MarCal** supports only New York Stock Exchange (NYSE) calendar from 2020 to 2023.
 
 
-### How to Install?
-```
+### Install
+```bash
 npm i marcal
 ```
 
-### How to Use?
-```javascript
+### Usage
+```typescript
 import MarCal from 'marcal';
 
 const mar_cal = new MarCal();
 
-const is_nyse_open = mar_cal.isMarketOpen();
+const is_nyse_open: boolean = mar_cal.isMarketOpen();
 if (is_nyse_open) {
   console.log('NYSE is open')
 } else {
@@ -27,8 +27,8 @@ if (is_nyse_open) {
 }
 ```
 
-### MarCal Public Methods
-```javascript
+### Methods
+```typescript
 // Method checks if the given market is open or closed.
 //
 // Arguments:
