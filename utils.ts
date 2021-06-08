@@ -13,7 +13,7 @@ import { nyse_holidays } from './markets/nyse';
 // - key: Provide key, which will be checked.
 //
 // Returns true if an object has 'key' property, otherwise false.
-export function hasKey(object: object, key: string) {
+export function hasKey(object: object, key: string): boolean {
   const has = Object.prototype.hasOwnProperty;
   return has.call(object, key);
 }
@@ -21,7 +21,7 @@ export function hasKey(object: object, key: string) {
 
 // The New York Stock Exchange is open between 9:30am - 4:00pm from Monday
 // to Friday in New York time, inless it is not a holiday day.
-export function isNYSEOpen() {
+export function isNYSEOpen(): boolean {
   const ny_time = moment_timezone().tz('America/New_York');
   const week_day = ny_time.day();
   if (week_day === 0 || week_day === 6) return false;
@@ -37,7 +37,7 @@ export function isNYSEOpen() {
 }
 
 
-export function isHoliday(current_time: any, market: string = 'nyse') {
+export function isHoliday(current_time: any, market: string = 'nyse'): boolean {
   let holiday_dic = {};
   switch (market) {
     case 'nyse':

@@ -10,7 +10,7 @@ class MarCal {
   // -market: Market name. By default it is set to 'nyse'.
   //
   // Returns true if market open, otherwise false.
-  isMarketOpen(market: string = 'nyse') {
+  isMarketOpen(market: string = 'nyse'): boolean {
     let result = false;
     market = market.toLowerCase();
     switch (market) {
@@ -32,7 +32,7 @@ class MarCal {
   // -market: Market name. By default it is set to 'nyse'.
   //
   // Returns true if market is closed (holiday or weekend), otherwise false.
-  isHolidayOrWeekend(market: string = 'nyse') {
+  isHolidayOrWeekend(market: string = 'nyse'): boolean {
     let time: any = false;
     switch (market) {
       case 'nyse':
@@ -58,7 +58,7 @@ class MarCal {
   // -market: Market name. By default it is set to 'nyse'.
   //
   // Returns true if the given market is on early trading session, otherwise false.
-  isEarlyTradingSession(market: string = 'nyse') {
+  isEarlyTradingSession(market: string = 'nyse'): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE early trading session: 7:00 a.m. to 9:30 a.m. ET
@@ -79,7 +79,7 @@ class MarCal {
   // -market: Market name. By default it is set to 'nyse'.
   //
   // Returns true if the given market is on late trading session, otherwise false.
-  isLateTradingSession(market: string = 'nyse') {
+  isLateTradingSession(market: string = 'nyse'): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 4:00 p.m. to 8:00 p.m. ET
@@ -100,7 +100,7 @@ class MarCal {
   // -market: Market name. By default it is set to 'nyse'.
   //
   // Returns true if the given market is on core trading session, otherwise false.
-  isCoreTradingSession(market: string = 'nyse') {
+  isCoreTradingSession(market: string = 'nyse'): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 9:30 a.m. to 4:00 p.m. ET
@@ -113,7 +113,7 @@ class MarCal {
   }
 
 
-  isTimeInCoreThreadinInterval(now: any) {
+  isTimeInCoreThreadinInterval(now: any): boolean {
     const curr_time = moment(now).tz('America/New_York');
     const ny_time = moment_timezone().tz('America/New_York');
     const open_time = moment(ny_time).set('hour', 9).set('minute', 30).set('second', 0);

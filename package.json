@@ -1,6 +1,6 @@
 {
   "name": "marcal",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Exchanges Calendar for Trading Applications",
   "author": "Artiom Baloian <artiom.baloian@gmail.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "prepare": "npm run build",
     "start": "NODE_ENV=${NODE_ENV-production} node --experimental-specifier-resolution=node dist/marcal.js",
     "dev": "tsc && NODE_ENV=${NODE_ENV-development} node --experimental-specifier-resolution=node dist/tests.js"
@@ -25,12 +25,12 @@
     "moment-timezone": "^0.5.32"
   },
   "devDependencies": {
-    "typescript": "^4.2.2",
-    "@types/node": "^14.14.41",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
+    "@types/node": "^15.12.1",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.23.4",
+    "typescript": "^4.3.2"
   }
 }
