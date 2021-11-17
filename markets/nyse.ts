@@ -1,6 +1,6 @@
 // All NYSE markets observe U.S. holidays as listed below for 2020,
 // 2021, and 2022.
-export const nyse_holidays = {
+export const nyseHolidays = {
   2020: {
     January: [1, 20],
     February: [17],

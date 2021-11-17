@@ -21,7 +21,7 @@ export class MarCal implements MarCalType {
   //
   // Returns true if market open, otherwise false.
   isMarketOpen(market: string): boolean {
-    let result = false;
+    let result: boolean = false;
     market = market.toLowerCase();
     switch (market) {
       case 'nyse':
@@ -54,8 +54,8 @@ export class MarCal implements MarCalType {
 
     if (!time) return false;
 
-    const week_day = time.day();
-    if (week_day === 0 || week_day === 6) return true;
+    const weekDay: number = time.day();
+    if (weekDay === 0 || weekDay === 6) return true;
     return isHoliday(time, market);
   }
 
@@ -72,11 +72,11 @@ export class MarCal implements MarCalType {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE early trading session: 7:00 a.m. to 9:30 a.m. ET
-    const ny_time = moment_timezone().tz('America/New_York');
-    const open_time = moment(ny_time).set('hour', 7).set('minute', 0).set('second', 0);
-    const close_time = moment(ny_time).set('hour', 9).set('minute', 30).set('second', 0);
+    const nyTime = moment_timezone().tz('America/New_York');
+    const openTime = moment(nyTime).set('hour', 7).set('minute', 0).set('second', 0);
+    const closeTime = moment(nyTime).set('hour', 9).set('minute', 30).set('second', 0);
 
-    if (ny_time >= open_time && ny_time < close_time) return true;
+    if (nyTime >= openTime && nyTime < closeTime) return true;
     return false;
   }
 
@@ -93,11 +93,11 @@ export class MarCal implements MarCalType {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 4:00 p.m. to 8:00 p.m. ET
-    const ny_time = moment_timezone().tz('America/New_York');
-    const open_time = moment(ny_time).set('hour', 16).set('minute', 0).set('second', 0);
-    const close_time = moment(ny_time).set('hour', 20).set('minute', 0).set('second', 0);
+    const nyTime = moment_timezone().tz('America/New_York');
+    const openTime = moment(nyTime).set('hour', 16).set('minute', 0).set('second', 0);
+    const closeTime = moment(nyTime).set('hour', 20).set('minute', 0).set('second', 0);
 
-    if (ny_time >= open_time && ny_time < close_time) return true;
+    if (nyTime >= openTime && nyTime < closeTime) return true;
     return false;
   }
 
@@ -114,21 +114,21 @@ export class MarCal implements MarCalType {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 9:30 a.m. to 4:00 p.m. ET
-    const ny_time = moment_timezone().tz('America/New_York');
-    const open_time = moment(ny_time).set('hour', 9).set('minute', 30).set('second', 0);
-    const close_time = moment(ny_time).set('hour', 16).set('minute', 0).set('second', 0);
+    const nyTime = moment_timezone().tz('America/New_York');
+    const openTime = moment(nyTime).set('hour', 9).set('minute', 30).set('second', 0);
+    const closeTime = moment(nyTime).set('hour', 16).set('minute', 0).set('second', 0);
 
-    if (ny_time >= open_time && ny_time < close_time) return true;
+    if (nyTime >= openTime && nyTime < closeTime) return true;
     return false;
   }
 
 
   isTimeInCoreThreadinInterval(now: any): boolean {
-    const curr_time = moment(now).tz('America/New_York');
-    const ny_time = moment_timezone().tz('America/New_York');
-    const open_time = moment(ny_time).set('hour', 9).set('minute', 30).set('second', 0);
-    const close_time = moment(ny_time).set('hour', 16).set('minute', 0).set('second', 0);
-    if (curr_time >= open_time && curr_time < close_time) return true;
+    const currTime = moment(now).tz('America/New_York');
+    const nyTime = moment_timezone().tz('America/New_York');
+    const openTime = moment(nyTime).set('hour', 9).set('minute', 30).set('second', 0);
+    const closeTime = moment(nyTime).set('hour', 16).set('minute', 0).set('second', 0);
+    if (currTime >= openTime && currTime < closeTime) return true;
     return false;
   }
 }
