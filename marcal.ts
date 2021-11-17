@@ -22,8 +22,7 @@ export class MarCal implements MarCalType {
   // Returns true if market open, otherwise false.
   isMarketOpen(market: string): boolean {
     let result: boolean = false;
-    market = market.toLowerCase();
-    switch (market) {
+    switch (market.toLowerCase()) {
       case 'nyse':
         result = isNYSEOpen();
         break;
@@ -44,7 +43,7 @@ export class MarCal implements MarCalType {
   // Returns true if market is closed (holiday or weekend), otherwise false.
   isHolidayOrWeekend(market: string): boolean {
     let time: any = false;
-    switch (market) {
+    switch (market.toLowerCase()) {
       case 'nyse':
         time = moment_timezone().tz('America/New_York');
         break;

@@ -44,7 +44,7 @@ export function isHoliday(currentTime: any, market: string = 'nyse'): boolean {
       holidayDic = {};
   }
 
-  const currentYear = String(currentTime.year());
+  const currentYear: string = String(currentTime.year());
   if (hasKey(holidayDic, currentYear)) {
     const currentMonth: string = currentTime.format('MMMM');
     if (hasKey(holidayDic[currentYear], currentMonth)) {
