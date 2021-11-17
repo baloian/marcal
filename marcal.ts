@@ -3,14 +3,24 @@ import moment from 'moment';
 import { isHoliday, isNYSEOpen } from './utils';
 
 
-class MarCal {
+export interface MarCalType {
+  isMarketOpen(market: string): boolean;
+  isHolidayOrWeekend(market: string): boolean;
+  isEarlyTradingSession(market: string): boolean;
+  isLateTradingSession(market: string): boolean;
+  isCoreTradingSession(market: string): boolean;
+  isTimeInCoreThreadinInterval(now: any): boolean
+}
+
+
+export class MarCal implements MarCalType {
   // Method checks if the given market is open or closed.
   //
   // Arguments:
-  // -market: Market name. By default it is set to 'nyse'.
+  // -market: Market name.
   //
   // Returns true if market open, otherwise false.
-  isMarketOpen(market: string = 'nyse'): boolean {
+  isMarketOpen(market: string): boolean {
     let result = false;
     market = market.toLowerCase();
     switch (market) {
@@ -29,10 +39,10 @@ class MarCal {
   // TODO: Currently, the method supports only NYSE.
   //
   // Arguments:
-  // -market: Market name. By default it is set to 'nyse'.
+  // -market: Market name.
   //
   // Returns true if market is closed (holiday or weekend), otherwise false.
-  isHolidayOrWeekend(market: string = 'nyse'): boolean {
+  isHolidayOrWeekend(market: string): boolean {
     let time: any = false;
     switch (market) {
       case 'nyse':
@@ -55,10 +65,10 @@ class MarCal {
   // TODO: Currently, the method supports only NYSE.
   //
   // Arguments:
-  // -market: Market name. By default it is set to 'nyse'.
+  // -market: Market name.
   //
   // Returns true if the given market is on early trading session, otherwise false.
-  isEarlyTradingSession(market: string = 'nyse'): boolean {
+  isEarlyTradingSession(market: string): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE early trading session: 7:00 a.m. to 9:30 a.m. ET
@@ -76,10 +86,10 @@ class MarCal {
   // TODO: Currently, the method supports only NYSE.
   //
   // Arguments:
-  // -market: Market name. By default it is set to 'nyse'.
+  // -market: Market name.
   //
   // Returns true if the given market is on late trading session, otherwise false.
-  isLateTradingSession(market: string = 'nyse'): boolean {
+  isLateTradingSession(market: string): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 4:00 p.m. to 8:00 p.m. ET
@@ -97,10 +107,10 @@ class MarCal {
   // TODO: Currently, the method supports only NYSE.
   //
   // Arguments:
-  // -market: Market name. By default it is set to 'nyse'.
+  // -market: Market name.
   //
   // Returns true if the given market is on core trading session, otherwise false.
-  isCoreTradingSession(market: string = 'nyse'): boolean {
+  isCoreTradingSession(market: string): boolean {
     if (this.isHolidayOrWeekend(market)) return false;
 
     // NYSE late trading session: 9:30 a.m. to 4:00 p.m. ET
@@ -122,5 +132,3 @@ class MarCal {
     return false;
   }
 }
-
-export default MarCal;

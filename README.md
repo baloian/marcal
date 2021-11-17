@@ -15,11 +15,11 @@ npm i marcal
 
 ### Usage
 ```typescript
-import MarCal from 'marcal';
+import { MarCal, MarCalType } from 'marcal';
 
-const mar_cal = new MarCal();
+const marCal: MarCalType = new MarCal();
 
-const is_nyse_open: boolean = mar_cal.isMarketOpen();
+const is_nyse_open = marCal.isMarketOpen('nyse');
 if (is_nyse_open) {
   console.log('NYSE is open')
 } else {

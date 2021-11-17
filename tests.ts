@@ -1,15 +1,15 @@
-import MarCal from './marcal';
+import { MarCal, MarCalType } from './marcal';
 
-const mar_cal = new MarCal();
+const marCal: MarCalType = new MarCal();
 
-const is_nyse_open = mar_cal.isMarketOpen('nyse');
+const is_nyse_open = marCal.isMarketOpen('nyse');
 if (is_nyse_open) {
   console.log('NYSE is open')
 } else {
   console.log('NYSE is closed')
 }
 
-const is_holiday = mar_cal.isHolidayOrWeekend();
+const is_holiday = marCal.isHolidayOrWeekend('nyse');
 if (is_holiday) {
   console.log('Today is holiday or weekend');
 }
