@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "ESNext",
-    "declaration": true,
+    "target": "ES2022",
+    "module": "NodeNext",
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "outDir": "dist",
-    "lib": ["ES2020"],
+    "lib": ["ES2022"],
     "strictNullChecks": true
   },
   "exclude": [
@@ -16,4 +15,3 @@
     "node_modules"
   ]
 }
-
