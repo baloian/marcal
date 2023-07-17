@@ -1,11 +1,9 @@
 # Financial Market Calendar
 
-**MarCal** is a `TypeScript` library which provides market calendar and
-trading hours for trading applications.
-
+**MarCal** is a TypeScript library that provides market calendars and trading hours for trading applications.
 
 ### Supported markets
-For now, **MarCal** supports only New York Stock Exchange (NYSE) calendar from 2020 to 2023.
+For now, **MarCal** only supports the New York Stock Exchange (NYSE) calendar for the years 2023 and 2024.
 
 
 ### Install
@@ -49,4 +47,3 @@ rules specified in `.eslintrc.json` file.
 ### License
 This source code is available to everyone under the standard
 [MIT LICENSE](https://github.com/baloian/marcal/blob/master/LICENSE).
-
