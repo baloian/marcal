@@ -1,6 +1,6 @@
 {
   "name": "marcal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Exchanges Calendar for Trading Applications",
   "author": "Artiom Baloian <artiom.baloian@gmail.com>",
   "license": "MIT",
@@ -24,12 +24,12 @@
     "moment-timezone": "^0.5.34"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
-    "eslint": "^8.23.0",
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.27.5",
     "typescript": "^5.1.3"
   }
 }
