@@ -29,7 +29,6 @@ export class MarCal implements MarCalType {
       default:
         result = false;
     }
-
     return result;
   }
 
@@ -50,7 +49,6 @@ export class MarCal implements MarCalType {
       default:
         time = false;
     }
-
     if (!time) return false;
 
     const weekDay: number = time.day();
@@ -127,6 +125,7 @@ export class MarCal implements MarCalType {
     const nyTime = moment_timezone().tz('America/New_York');
     const openTime = moment(nyTime).set('hour', 9).set('minute', 30).set('second', 0);
     const closeTime = moment(nyTime).set('hour', 16).set('minute', 0).set('second', 0);
+
     if (currTime >= openTime && currTime < closeTime) return true;
     return false;
   }

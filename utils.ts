@@ -14,8 +14,7 @@ import { nyseHolidays } from './markets/nyse';
 //
 // Returns true if an object has 'key' property, otherwise false.
 export function hasKey(object: object, key: string): boolean {
-  const has = Object.prototype.hasOwnProperty;
-  return has.call(object, key);
+  return Object.prototype.hasOwnProperty.call(object, key);
 }
 
 
@@ -35,7 +34,7 @@ export function isNYSEOpen(): boolean {
 
 
 export function isHoliday(currentTime: any, market: string = 'nyse'): boolean {
-  let holidayDic = {};
+  let holidayDic: {[key: string]: { [key: string]: number[]}} = {};
   switch (market) {
     case 'nyse':
       holidayDic = nyseHolidays;
