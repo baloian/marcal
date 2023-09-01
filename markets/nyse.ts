@@ -31,10 +31,9 @@ export class NYSEMarket implements NYSEMarketTy {
       December: [25]
     },
     2024: {
-      January: [15],
+      January: [1, 15],
       February: [19],
       March: [29],
-      April: [7],
       May: [27],
       June: [19],
       July: [4],
