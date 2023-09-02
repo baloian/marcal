@@ -1,4 +1,3 @@
-import { Moment } from 'moment';
 import { MarketTime, NYTimeNow } from './time';
 
 

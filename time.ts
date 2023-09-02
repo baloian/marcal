@@ -24,12 +24,12 @@ export class MarketTime {
 
   static get earlyClosed(): boolean {
     const nyNow: Moment = MarketTime.currentNYTime;
-    return MarketTime.openTime > nyNow || MarketTime.earlyCloseTime <= nyNow;
+    return MarketTime.earlyCloseTime <= nyNow || MarketTime.openTime > nyNow;
   }
 
   static get coreOpen(): boolean {
     const nyNow: Moment = MarketTime.currentNYTime;
-    return MarketTime.openTime <= nyNow && MarketTime.closeTime > nyNow;
+    return MarketTime.closeTime > nyNow && MarketTime.openTime <= nyNow;
   }
 }
 
