@@ -17,8 +17,8 @@ import { MarCal, MarCalType } from 'marcal';
 
 const marCal: MarCalType = new MarCal();
 
-const isNYSEOpen: boolean = marCal.isMarketOpen();
-if (isNYSEOpen) {
+const open: boolean = marCal.isMarketOpen();
+if (open) {
   console.log('US market is open')
 } else {
   console.log('US market is closed')
