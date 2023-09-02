@@ -9,8 +9,8 @@ function getCurrentNYTime(): Moment {
 
 type CalendarTy = {[key: string]: {[key: string]: number[]}};
 export interface NYSEMarketTy {
-  holidays: CalendarTy;
-  earlyCloseDays: CalendarTy;
+  readonly holidays: CalendarTy;
+  readonly earlyCloseDays: CalendarTy;
   isOpen(): boolean;
 }
 
@@ -18,7 +18,7 @@ export interface NYSEMarketTy {
 // All NYSE markets observe U.S. holidays as listed below for 2023, 2024, and 2025.
 // Source: https://www.nyse.com/markets/hours-calendars
 export class NYSEMarket implements NYSEMarketTy {
-  holidays: CalendarTy = {
+  readonly holidays: CalendarTy = {
     2023: {
       January: [16],
       February: [20],
@@ -53,7 +53,7 @@ export class NYSEMarket implements NYSEMarketTy {
       December: [25]
     }
   };
-  earlyCloseDays: CalendarTy = {
+  readonly earlyCloseDays: CalendarTy = {
     2023: {
       July: [3],
       November: [24]
@@ -79,13 +79,13 @@ export class NYSEMarket implements NYSEMarketTy {
     const month: string = currenDate.format('MMMM');
     const day: number = Number(currenDate.format('DD'));
 
-    if (this.isOnCalendar(this.holidays, year, month, day)) return false;
+    if (this.isDateOnCalendar(this.holidays, year, month, day)) return false;
     if (this.isEarlyClose(year, month, day)) return false;
     return this.isCoreThreadingSession();
   }
 
   private isEarlyClose(year: string, month: string, day: number): boolean {
-    if (this.isOnCalendar(this.earlyCloseDays, year, month, day)) {
+    if (this.isDateOnCalendar(this.earlyCloseDays, year, month, day)) {
       // Each market will close early at 1:00 p.m
       const closeTime: Moment = moment(getCurrentNYTime()).set('hour', 13).set('minute', 0).set('second', 0).set('millisecond', 0);
       const currentNYTime: Moment = getCurrentNYTime();
@@ -94,7 +94,7 @@ export class NYSEMarket implements NYSEMarketTy {
     return false;
   }
 
-  private isOnCalendar(data: CalendarTy, year: string, month: string, day: number): boolean {
+  private isDateOnCalendar(data: CalendarTy, year: string, month: string, day: number): boolean {
     if (data[year] && data[year][month]) {
       const found: number | undefined = data[year][month].find((e: number) => e === day);
       if (found) return true;
