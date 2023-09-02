@@ -81,15 +81,14 @@ export class NYSEMarket implements NYSEMarketTy {
 
     if (this.isOnCalendar(this.holidays, year, month, day)) return false;
     if (this.isEarlyClose(year, month, day)) return false;
-    if (!this.isCoreThreadingSession()) return false;
-    return true;
+    return this.isCoreThreadingSession();
   }
 
   private isEarlyClose(year: string, month: string, day: number): boolean {
     if (this.isOnCalendar(this.earlyCloseDays, year, month, day)) {
       // Each market will close early at 1:00 p.m
-      const closeTime = moment(getCurrentNYTime()).set('hour', 13).set('minute', 0).set('second', 0).set('millisecond', 0);
-      const currentNYTime = getCurrentNYTime();
+      const closeTime: Moment = moment(getCurrentNYTime()).set('hour', 13).set('minute', 0).set('second', 0).set('millisecond', 0);
+      const currentNYTime: Moment = getCurrentNYTime();
       if (currentNYTime >= closeTime) return true;
     }
     return false;
@@ -97,7 +96,7 @@ export class NYSEMarket implements NYSEMarketTy {
 
   private isOnCalendar(data: CalendarTy, year: string, month: string, day: number): boolean {
     if (data[year] && data[year][month]) {
-      const found = data[year][month].find((e: number) => e === day);
+      const found: number | undefined = data[year][month].find((e: number) => e === day);
       if (found) return true;
     }
     return false;
