@@ -1,4 +1,4 @@
-import { NYSEMarket, NYSEMarketTy } from './markets/nyse';
+import { NYSEMarket, NYSEMarketTy } from './nyse';
 
 
 export interface MarCalType {
