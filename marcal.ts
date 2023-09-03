@@ -12,7 +12,6 @@ export class MarCal implements MarCalType {
   readonly nyse: NYSEMarketTy = new NYSEMarket();
 
   isMarketOpen(): boolean {
-    // TODO: Provide functionality for other markets as well.
     return this.nyse.isOpen();
   }
 

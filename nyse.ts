@@ -3,13 +3,13 @@ import { MarketTime, NYTimeNow, NYTimeNowTy } from './time';
 
 
 type CalendarTy = {[key: string]: {[key: string]: number[]}};
+
 export interface NYSEMarketTy {
   readonly holidays: CalendarTy;
   readonly earlyCloseDays: CalendarTy;
   isOpen(): boolean;
   minutesToClose(): number;
 }
-
 
 // All NYSE markets observe U.S. holidays as listed below for 2023, 2024, and 2025.
 // Source: https://www.nyse.com/markets/hours-calendars
@@ -70,9 +70,9 @@ export class NYSEMarket implements NYSEMarketTy {
     const now: NYTimeNowTy = new NYTimeNow();
     if (now.weekDay === 0 || now.weekDay === 6) return false;
 
+    if (this.isDateOnCalendar(this.holidays, now)) return false;
     // On early close days each market will close early at 1:00 p.m
     if (this.isDateOnCalendar(this.earlyCloseDays, now) && MarketTime.earlyClosed()) return false;
-    if (this.isDateOnCalendar(this.holidays, now)) return false;
     return MarketTime.coreOpen();
   }
 
@@ -80,9 +80,7 @@ export class NYSEMarket implements NYSEMarketTy {
     if (this.isOpen()) {
       const now: NYTimeNowTy = new NYTimeNow();
       let close: Moment = MarketTime.closeTime;
-      if (this.isDateOnCalendar(this.earlyCloseDays, now)) {
-        close = MarketTime.earlyCloseTime;
-      }
+      if (this.isDateOnCalendar(this.earlyCloseDays, now)) close = MarketTime.earlyCloseTime;
       return close.diff(now.time, 'minutes');
     }
     return 0;
