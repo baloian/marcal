@@ -1,5 +1,7 @@
 /dist
 /node_modules
+/.cache
 *.swp
 .DS_Store
-/.cache
+.env
+yarn.lock

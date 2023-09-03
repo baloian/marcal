@@ -27,6 +27,7 @@
     }
   },
   "rules": {
+      "max-len": ["error", { "code": 102 }],
       "semi": ["error", "always"],
       "quotes": ["error", "single"],
       "camelcase": "off",
