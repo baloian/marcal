@@ -22,12 +22,12 @@ export class MarketTime {
     return moment(now).set('hour', 13).set('minute', 0).set('second', 0).set('millisecond', 0);
   }
 
-  static get earlyClosed(): boolean {
+  static earlyClosed(): boolean {
     const nyNow: Moment = MarketTime.currentNYTime;
     return MarketTime.earlyCloseTime <= nyNow || MarketTime.openTime > nyNow;
   }
 
-  static get coreOpen(): boolean {
+  static coreOpen(): boolean {
     const nyNow: Moment = MarketTime.currentNYTime;
     return MarketTime.closeTime > nyNow && MarketTime.openTime <= nyNow;
   }
@@ -35,7 +35,11 @@ export class MarketTime {
 
 
 export class NYTimeNow {
-  now: Moment = MarketTime.currentNYTime;
+  readonly now: Moment = MarketTime.currentNYTime;
+
+  get time(): Moment {
+    return this.now;
+  }
 
   get weekDay(): number {
     return this.now.day();

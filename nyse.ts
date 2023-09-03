@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { MarketTime, NYTimeNow } from './time';
 
 
@@ -69,9 +70,21 @@ export class NYSEMarket implements NYSEMarketTy {
     if (now.weekDay === 0 || now.weekDay === 6) return false;
 
     // On early close days each market will close early at 1:00 p.m
-    if (this.isDateOnCalendar(this.earlyCloseDays, now.year, now.month, now.day) && MarketTime.earlyClosed) return false;
+    if (this.isDateOnCalendar(this.earlyCloseDays, now.year, now.month, now.day) && MarketTime.earlyClosed()) return false;
     if (this.isDateOnCalendar(this.holidays, now.year, now.month, now.day)) return false;
-    return MarketTime.coreOpen;
+    return MarketTime.coreOpen();
+  }
+
+  minutesToClose(): number {
+    if (this.isOpen()) {
+      const now = new NYTimeNow();
+      let close: Moment = MarketTime.closeTime;
+      if (this.isDateOnCalendar(this.earlyCloseDays, now.year, now.month, now.day)) {
+        close = MarketTime.earlyCloseTime;
+      }
+      return close.diff(now.time, 'minutes');
+    }
+    return 0;
   }
 
   private isDateOnCalendar(data: CalendarTy, year: string, month: string, day: number): boolean {
