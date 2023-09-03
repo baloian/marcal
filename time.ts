@@ -34,7 +34,16 @@ export class MarketTime {
 }
 
 
-export class NYTimeNow {
+export interface NYTimeNowTy {
+  readonly now: Moment;
+  get time(): Moment;
+  get weekDay(): number;
+  get year(): string;
+  get month(): string;
+  get day(): number;
+}
+
+export class NYTimeNow implements NYTimeNowTy {
   readonly now: Moment = MarketTime.currentNYTime;
 
   get time(): Moment {

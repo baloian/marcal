@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { MarketTime, NYTimeNow } from './time';
+import { MarketTime, NYTimeNow, NYTimeNowTy } from './time';
 
 
 type CalendarTy = {[key: string]: {[key: string]: number[]}};
@@ -67,20 +67,20 @@ export class NYSEMarket implements NYSEMarketTy {
   };
 
   isOpen(): boolean {
-    const now = new NYTimeNow();
+    const now: NYTimeNowTy = new NYTimeNow();
     if (now.weekDay === 0 || now.weekDay === 6) return false;
 
     // On early close days each market will close early at 1:00 p.m
-    if (this.isDateOnCalendar(this.earlyCloseDays, now.year, now.month, now.day) && MarketTime.earlyClosed()) return false;
-    if (this.isDateOnCalendar(this.holidays, now.year, now.month, now.day)) return false;
+    if (this.isDateOnCalendar(this.earlyCloseDays, now) && MarketTime.earlyClosed()) return false;
+    if (this.isDateOnCalendar(this.holidays, now)) return false;
     return MarketTime.coreOpen();
   }
 
   minutesToClose(): number {
     if (this.isOpen()) {
-      const now = new NYTimeNow();
+      const now: NYTimeNowTy = new NYTimeNow();
       let close: Moment = MarketTime.closeTime;
-      if (this.isDateOnCalendar(this.earlyCloseDays, now.year, now.month, now.day)) {
+      if (this.isDateOnCalendar(this.earlyCloseDays, now)) {
         close = MarketTime.earlyCloseTime;
       }
       return close.diff(now.time, 'minutes');
@@ -88,9 +88,9 @@ export class NYSEMarket implements NYSEMarketTy {
     return 0;
   }
 
-  private isDateOnCalendar(data: CalendarTy, year: string, month: string, day: number): boolean {
-    if (data[year] && data[year][month]) {
-      const found: number | undefined = data[year][month].find((e: number) => e === day);
+  private isDateOnCalendar(data: CalendarTy, now: NYTimeNowTy): boolean {
+    if (data[now.year] && data[now.year][now.month]) {
+      const found: number | undefined = data[now.year][now.month].find((e: number) => e === now.day);
       if (found) return true;
     }
     return false;
