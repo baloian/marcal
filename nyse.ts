@@ -7,6 +7,7 @@ export interface NYSEMarketTy {
   readonly holidays: CalendarTy;
   readonly earlyCloseDays: CalendarTy;
   isOpen(): boolean;
+  minutesToClose(): number;
 }
 
 

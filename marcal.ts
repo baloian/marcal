@@ -14,4 +14,8 @@ export class MarCal implements MarCalType {
     // TODO: Provide functionality for other markets as well.
     return this.nyse.isOpen();
   }
+
+  minutesToClose(): number {
+    return this.nyse.minutesToClose();
+  }
 }
