@@ -25,6 +25,15 @@ if (open) {
 }
 ```
 
+## Methods
+```typescript
+// Returns true if US market is open. Otherwise, false.
+isMarketOpen(): boolean
+
+// Returns the number of remaining minutes before the market closes.
+minutesToClose(): number
+```
+
 ## Contributions
 Contributions are welcome and can be made by submitting GitHub pull requests
 to this repository. In general, the `MarCal` source code follows
