@@ -1,4 +1,7 @@
 # Stock Market Calendar
+
+[![NPM](https://nodei.co/npm/npm-badge.png?mini=true)](https://www.npmjs.com/package/marcal)
+
 **MarCal** is a TypeScript library that provides a stock market calendar for stock trading applications.
 For now, it provides the calendar for the years `2023`, `2024` and `2025`.
 
