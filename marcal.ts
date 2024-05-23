@@ -3,7 +3,9 @@ import { NYSEMarket, NYSEMarketTy } from './nyse';
 
 export interface MarCalType {
   readonly nyse: NYSEMarketTy;
-  isMarketOpen(): boolean;
+  marketOpen(): boolean;
+  preMarket(): boolean;
+  afterMarket(): boolean;
   minutesToClose(): number;
 }
 
@@ -11,8 +13,16 @@ export interface MarCalType {
 export class MarCal implements MarCalType {
   readonly nyse: NYSEMarketTy = new NYSEMarket();
 
-  isMarketOpen(): boolean {
-    return this.nyse.isOpen();
+  marketOpen(): boolean {
+    return this.nyse.open();
+  }
+
+  preMarket(): boolean {
+    return this.nyse.preMarket();
+  }
+
+  afterMarket(): boolean {
+    return this.nyse.afterMarket();
   }
 
   minutesToClose(): number {

@@ -7,7 +7,9 @@ type CalendarTy = {[key: string]: {[key: string]: number[]}};
 export interface NYSEMarketTy {
   readonly holidays: CalendarTy;
   readonly earlyCloseDays: CalendarTy;
-  isOpen(): boolean;
+  open(): boolean;
+  preMarket(): boolean;
+  afterMarket(): boolean;
   minutesToClose(): number;
 }
 
@@ -66,18 +68,16 @@ export class NYSEMarket implements NYSEMarketTy {
     }
   };
 
-  isOpen(): boolean {
+  open(): boolean {
     const now: NYTimeNowTy = new NYTimeNow();
-    if (now.weekDay === 0 || now.weekDay === 6) return false;
-
-    if (this.isDateOnCalendar(this.holidays, now)) return false;
+    if (!this.openDay(now)) return false;
     // On early close days each market will close early at 1:00 p.m
-    if (this.isDateOnCalendar(this.earlyCloseDays, now) && MarketTime.earlyClosed()) return false;
+    if (MarketTime.earlyClosed()) return false;
     return MarketTime.coreOpen();
   }
 
   minutesToClose(): number {
-    if (this.isOpen()) {
+    if (this.open()) {
       const now: NYTimeNowTy = new NYTimeNow();
       let close: Moment = MarketTime.closeTime;
       if (this.isDateOnCalendar(this.earlyCloseDays, now)) close = MarketTime.earlyCloseTime;
@@ -86,11 +86,31 @@ export class NYSEMarket implements NYSEMarketTy {
     return 0;
   }
 
+  preMarket(): boolean {
+    const now: NYTimeNowTy = new NYTimeNow();
+    if (!this.openDay(now)) return false;
+    // TODO
+    return false;
+  }
+
+  afterMarket(): boolean {
+    const now: NYTimeNowTy = new NYTimeNow();
+    if (!this.openDay(now)) return false;
+    // TODO
+    return false;
+  }
+
   private isDateOnCalendar(data: CalendarTy, now: NYTimeNowTy): boolean {
     if (data[now.year] && data[now.year][now.month]) {
       const found: number | undefined = data[now.year][now.month].find((e: number) => e === now.day);
       if (found) return true;
     }
     return false;
+  }
+
+  private openDay(now: NYTimeNowTy): boolean {
+    if (now.weekDay === 0 || now.weekDay === 6) return false;
+    if (this.isDateOnCalendar(this.holidays, now)) return false;
+    return true;
   }
 }
