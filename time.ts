@@ -31,6 +31,18 @@ export class MarketTime {
     const nyNow: Moment = MarketTime.currentNYTime;
     return MarketTime.closeTime > nyNow && MarketTime.openTime <= nyNow;
   }
+
+  static preMarket(): boolean {
+    if (MarketTime.coreOpen()) return false;
+    // TODO
+    return false;
+  }
+
+  static afterMarket(): boolean {
+    if (MarketTime.coreOpen()) return false;
+    // TODO
+    return false;
+  }
 }
 
 

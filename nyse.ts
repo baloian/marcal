@@ -88,15 +88,13 @@ export class NYSEMarket implements NYSEMarketTy {
 
   preMarket(): boolean {
     const now: NYTimeNowTy = new NYTimeNow();
-    if (!this.openDay(now)) return false;
-    // TODO
+    if (this.openDay(now) && MarketTime.preMarket()) return true;
     return false;
   }
 
   afterMarket(): boolean {
     const now: NYTimeNowTy = new NYTimeNow();
-    if (!this.openDay(now)) return false;
-    // TODO
+    if (this.openDay(now) && MarketTime.afterMarket()) return true;
     return false;
   }
 
