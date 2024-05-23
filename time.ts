@@ -14,7 +14,7 @@ export class MarketTime {
 
   static get preOpenTime(): Moment {
     const now: Moment = MarketTime.currentNYTime;
-    return moment(now).set('hour', 8).set('minute', 0).set('second', 0).set('millisecond', 0);
+    return moment(now).set('hour', 4).set('minute', 0).set('second', 0).set('millisecond', 0);
   }
 
   static get closeTime(): Moment {
