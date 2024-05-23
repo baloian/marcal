@@ -72,7 +72,7 @@ export class NYSEMarket implements NYSEMarketTy {
     const now: NYTimeNowTy = new NYTimeNow();
     if (!this.openDay(now)) return false;
     // On early close days each market will close early at 1:00 p.m
-    if (MarketTime.earlyClosed()) return false;
+    if (this.isDateOnCalendar(this.earlyCloseDays, now) && MarketTime.earlyClosed()) return false;
     return MarketTime.coreOpen();
   }
 
@@ -94,7 +94,8 @@ export class NYSEMarket implements NYSEMarketTy {
 
   afterMarket(): boolean {
     const now: NYTimeNowTy = new NYTimeNow();
-    if (this.openDay(now) && MarketTime.afterMarket()) return true;
+    const earlyCloseDay: boolean = this.isDateOnCalendar(this.earlyCloseDays, now);
+    if (this.openDay(now) && MarketTime.afterMarket(earlyCloseDay)) return true;
     return false;
   }
 

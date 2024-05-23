@@ -12,9 +12,24 @@ export class MarketTime {
     return moment(now).set('hour', 9).set('minute', 30).set('second', 0).set('millisecond', 0);
   }
 
+  static get preOpenTime(): Moment {
+    const now: Moment = MarketTime.currentNYTime;
+    return moment(now).set('hour', 8).set('minute', 0).set('second', 0).set('millisecond', 0);
+  }
+
   static get closeTime(): Moment {
     const now: Moment = MarketTime.currentNYTime;
     return moment(now).set('hour', 16).set('minute', 0).set('second', 0).set('millisecond', 0);
+  }
+
+  static get afterCloseTime(): Moment {
+    const now: Moment = MarketTime.currentNYTime;
+    return moment(now).set('hour', 20).set('minute', 0).set('second', 0).set('millisecond', 0);
+  }
+
+  static get afterEarlyCloseTime(): Moment {
+    const now: Moment = MarketTime.currentNYTime;
+    return moment(now).set('hour', 17).set('minute', 0).set('second', 0).set('millisecond', 0);
   }
 
   static get earlyCloseTime(): Moment {
@@ -33,15 +48,14 @@ export class MarketTime {
   }
 
   static preMarket(): boolean {
-    if (MarketTime.coreOpen()) return false;
-    // TODO
-    return false;
+    const nyNow: Moment = MarketTime.currentNYTime;
+    return nyNow >= MarketTime.preOpenTime && nyNow < MarketTime.openTime;
   }
 
-  static afterMarket(): boolean {
-    if (MarketTime.coreOpen()) return false;
-    // TODO
-    return false;
+  static afterMarket(earlyCloseDay: boolean): boolean {
+    const nyNow: Moment = MarketTime.currentNYTime;
+    if (earlyCloseDay) return nyNow > MarketTime.earlyCloseTime && nyNow < MarketTime.afterEarlyCloseTime;
+    return nyNow > MarketTime.closeTime && nyNow < MarketTime.afterCloseTime;
   }
 }
 
