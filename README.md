@@ -20,7 +20,7 @@ import { MarCal, MarCalType } from 'marcal';
 
 const marCal: MarCalType = new MarCal();
 
-const open: boolean = marCal.isMarketOpen();
+const open: boolean = marCal.marketOpen();
 if (open) {
   console.log('US market is open')
 } else {
@@ -31,7 +31,7 @@ if (open) {
 ## Methods
 ```typescript
 // Returns true if US market is open. Otherwise, false.
-isMarketOpen(): boolean
+marketOpen(): boolean
 
 // Returns the number of remaining minutes before the market closes.
 minutesToClose(): number
