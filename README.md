@@ -33,6 +33,12 @@ if (open) {
 // Returns true if US market is open. Otherwise, false.
 marketOpen(): boolean
 
+// Returns true if US market is in pre-open session. Otherwise, false.
+preMarket(): boolean
+
+// Returns true if US market is in after-market session. Otherwise, false.
+afterMarket(): boolean
+
 // Returns the number of remaining minutes before the market closes.
 minutesToClose(): number
 ```
