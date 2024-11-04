@@ -1,4 +1,4 @@
-import { MarCal, MarCalType } from './marcal';
+import { MarCal, MarCalType } from '../marcal';
 
 const marCal: MarCalType = new MarCal();
 

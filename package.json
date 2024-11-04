@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "moment": "^2.30.1",
-    "moment-timezone": "^0.5.45"
+    "moment-timezone": "^0.5.45",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
