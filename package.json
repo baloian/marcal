@@ -13,7 +13,8 @@
     "build": "rm -rf dist && tsc",
     "prepare": "npm run build",
     "start": "NODE_ENV=${NODE_ENV-production} node dist/marcal.js",
-    "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/tests.js"
+    "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/tests.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,12 +25,14 @@
     "moment-timezone": "^0.5.45"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.8.7",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.6.3"
   },
   "keywords": [
