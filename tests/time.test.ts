@@ -1,11 +1,10 @@
 import { MarketTime } from '../time';
-import moment from 'moment';
 
 
 describe('MarketTime', () => {
   test('openTime should return a moment object set to 9:30 am in New York time', () => {
-    const marketOpenTime = MarketTime.openTime;
     /*
+    const marketOpenTime = MarketTime.openTime;
     expect(marketOpenTime.hour()).toBe(9);
     expect(marketOpenTime.minute()).toBe(30);
     expect(marketOpenTime.tz()).toBe('America/New_York');
