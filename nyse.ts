@@ -1,6 +1,5 @@
-import { Moment } from 'moment';
-import { MarketTime, NYTimeNow, NYTimeNowTy } from './time';
-
+import { MarketTime } from './market-time';
+import { NYTimeNow, NYTimeNowTy } from './ny-time';
 
 type CalendarTy = {[key: string]: {[key: string]: number[]}};
 
@@ -79,9 +78,10 @@ export class NYSEMarket implements NYSEMarketTy {
   minutesToClose(): number {
     if (this.open()) {
       const now: NYTimeNowTy = new NYTimeNow();
-      let close: Moment = MarketTime.closeTime;
+      let close: Date = MarketTime.closeTime;
       if (this.isDateOnCalendar(this.earlyCloseDays, now)) close = MarketTime.earlyCloseTime;
-      return close.diff(now.time, 'minutes');
+      const diffMs = close.getTime() - now.time.getTime();
+      return Math.floor(diffMs / (1000 * 60));
     }
     return 0;
   }

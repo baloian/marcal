@@ -1,5 +1,5 @@
 import { NYSEMarket } from '../nyse';
-import { MarketTime, NYTimeNow } from '../time';
+import { MarketTime, NYTimeNow } from '../market-time';
 
 // Mock the time-related dependencies
 jest.mock('../time');

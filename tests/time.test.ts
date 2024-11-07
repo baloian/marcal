@@ -1,4 +1,4 @@
-import { MarketTime } from '../time';
+import { MarketTime } from '../market-time';
 
 
 describe('MarketTime', () => {
