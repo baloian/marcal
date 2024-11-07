@@ -13,8 +13,8 @@
     "build": "rm -rf dist && tsc",
     "prepare": "npm run build",
     "start": "NODE_ENV=${NODE_ENV-production} node dist/marcal.js",
-    "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/tests/tests.js",
-    "test": "jest"
+    "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/example.js",
+    "test": "npm run build && jest"
   },
   "repository": {
     "type": "git",
