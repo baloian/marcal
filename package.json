@@ -1,6 +1,6 @@
 {
   "name": "marcal",
-  "version": "0.3.3",
+  "version": "0.5.0",
   "description": "Exchanges Calendar for Trading Applications",
   "author": "Artiom Baloian <artiom.baloian@gmail.com>",
   "license": "MIT",
@@ -21,8 +21,6 @@
     "url": "https://github.com/baloian/marcal.git"
   },
   "dependencies": {
-    "moment": "^2.30.1",
-    "moment-timezone": "^0.5.45",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
