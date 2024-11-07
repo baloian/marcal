@@ -61,7 +61,7 @@ minutesToClose(): number
 ## Contributions
 We welcome contributions to MarCal! To contribute, please:
 
-1. Fork the repository
+1. `git clone` the repository
 2. Create a new branch for your feature/fix
 3. Make your changes following our coding standards
 4. Submit a pull request
