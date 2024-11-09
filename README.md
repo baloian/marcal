@@ -1,6 +1,6 @@
 # Stock Market Calendar
 
-[![NPM](https://nodei.co/npm/marcal.png?mini=true)](https://www.npmjs.com/package/marcal)
+[![NPM](https://img.shields.io/npm/v/marcal.svg)](https://www.npmjs.com/package/marcal)
 
 **MarCal** is a TypeScript library that provides a stock market calendar for stock trading applications.
 For now, it provides the calendar for the years `2023`, `2024` and `2025`.
@@ -13,7 +13,7 @@ Note that all major U.S. stock exchanges (NYSE, NASDAQ, and AMEX) operate on syn
 
 ## Install
 ```bash
-npm i marcal
+npm install marcal
 ```
 
 ## Usage
