@@ -1,14 +1,11 @@
 {
   "name": "marcal",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Exchanges Calendar for Trading Applications",
   "author": "Artiom Baloian <artiom.baloian@gmail.com>",
   "license": "MIT",
   "main": "dist/marcal.js",
   "types": "dist/marcal.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "rm -rf dist && tsc",
     "prepare": "npm run build",
@@ -16,6 +13,11 @@
     "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/example.js",
     "test": "npm run build && jest"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/baloian/marcal.git"
