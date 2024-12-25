@@ -18,9 +18,9 @@ npm install marcal
 
 ## Usage
 ```typescript
-import { MarCal, MarCalType } from 'marcal';
+import { MarCal } from 'marcal';
 
-const marCal: MarCalType = new MarCal();
+const marCal: MarCal = new MarCal();
 
 const isMarketOpen: boolean = marCal.marketOpen();
 

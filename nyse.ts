@@ -3,7 +3,7 @@ import { NYTimeNow, NYTimeNowTy } from './ny-time';
 
 type CalendarTy = {[key: string]: {[key: string]: number[]}};
 
-export interface NYSEMarketTy {
+export interface NYSEMarket {
   readonly holidays: CalendarTy;
   readonly earlyCloseDays: CalendarTy;
   open(): boolean;
@@ -14,7 +14,7 @@ export interface NYSEMarketTy {
 
 // All NYSE markets observe U.S. holidays as listed below for 2023, 2024, and 2025.
 // Source: https://www.nyse.com/markets/hours-calendars
-export class NYSEMarket implements NYSEMarketTy {
+export class NYSEMarket implements NYSEMarket {
   readonly holidays: CalendarTy = {
     2023: {
       January: [16],

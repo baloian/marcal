@@ -1,8 +1,8 @@
-import { NYSEMarket, NYSEMarketTy } from './nyse';
+import { NYSEMarket } from './nyse';
 
 
-export interface MarCalType {
-  readonly nyse: NYSEMarketTy;
+export interface MarCal {
+  readonly nyse: NYSEMarket;
   marketOpen(): boolean;
   preMarket(): boolean;
   afterMarket(): boolean;
@@ -10,8 +10,8 @@ export interface MarCalType {
 }
 
 
-export class MarCal implements MarCalType {
-  readonly nyse: NYSEMarketTy = new NYSEMarket();
+export class MarCal implements MarCal {
+  readonly nyse: NYSEMarket = new NYSEMarket();
 
   marketOpen(): boolean {
     return this.nyse.open();
