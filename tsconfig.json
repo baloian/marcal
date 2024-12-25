@@ -13,6 +13,9 @@
   },
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "doc",
+    "tests",
+    "*.test.ts"
   ]
 }
