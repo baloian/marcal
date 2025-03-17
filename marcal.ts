@@ -7,6 +7,7 @@ export interface MarCal {
   preMarket(): boolean;
   afterMarket(): boolean;
   minutesToClose(): number;
+  isHolidayOrWeekend(): boolean;
 }
 
 
@@ -27,5 +28,9 @@ export class MarCal implements MarCal {
 
   minutesToClose(): number {
     return this.nyse.minutesToClose();
+  }
+
+  isHolidayOrWeekend(): boolean {
+    return this.nyse.isHolidayOrWeekend();
   }
 }

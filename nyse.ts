@@ -10,6 +10,7 @@ export interface NYSEMarket {
   preMarket(): boolean;
   afterMarket(): boolean;
   minutesToClose(): number;
+  isHolidayOrWeekend(): boolean;
 }
 
 // All NYSE markets observe U.S. holidays as listed below for 2023, 2024, and 2025.
@@ -97,6 +98,11 @@ export class NYSEMarket implements NYSEMarket {
     const earlyCloseDay: boolean = this.isDateOnCalendar(this.earlyCloseDays, now);
     if (this.openDay(now) && MarketTime.afterMarket(earlyCloseDay)) return true;
     return false;
+  }
+
+  isHolidayOrWeekend(): boolean {
+    const now: NYTimeNowTy = new NYTimeNow();
+    return !this.openDay(now);
   }
 
   private isDateOnCalendar(data: CalendarTy, now: NYTimeNowTy): boolean {

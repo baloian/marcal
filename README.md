@@ -35,27 +35,33 @@ if (isMarketOpen) {
 ```typescript
 /**
  * Checks if the US stock market is currently open during regular trading hours (9:30 AM - 4:00 PM ET).
- * @returns {boolean} True if market is open, false otherwise
+ * Returns true if market is open, false otherwise
  */
 marketOpen(): boolean
 
 /**
  * Checks if the US stock market is in pre-market trading hours (4:00 AM - 9:30 AM ET).
- * @returns {boolean} True if in pre-market session, false otherwise
+ * Returns true if in pre-market session, false otherwise
  */
 preMarket(): boolean
 
 /**
  * Checks if the US stock market is in after-hours trading session (4:00 PM - 8:00 PM ET).
- * @returns {boolean} True if in after-hours session, false otherwise
+ * Returns true if in after-hours session, false otherwise
  */
 afterMarket(): boolean
 
 /**
  * Calculates remaining time until market close (4:00 PM ET).
- * @returns {number} Number of minutes until market closes. Returns 0 if market is already closed.
+ * Returns number of minutes until market closes. Returns 0 if market is already closed.
  */
 minutesToClose(): number
+
+/**
+ * Checks if the current day is a holiday or weekend.
+ * Returns true if the day is a holiday or weekend, false otherwise
+ */
+isHolidayOrWeekend(): boolean
 ```
 
 ## Contributions
