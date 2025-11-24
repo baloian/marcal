@@ -1,6 +1,5 @@
 import { MarketTime } from './market-time';
 
-
 export interface NYTimeNowTy {
   readonly now: Date;
   get time(): Date;

@@ -8,8 +8,8 @@ jest.mock('../nyse', () => {
       open: jest.fn(),
       preMarket: jest.fn(),
       afterMarket: jest.fn(),
-      minutesToClose: jest.fn(),
-    })),
+      minutesToClose: jest.fn()
+    }))
   };
 });
 
@@ -20,7 +20,7 @@ describe('MarCal', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     marCal = new MarCal();
-    mockNYSE = (marCal.nyse as jest.Mocked<NYSEMarket>);
+    mockNYSE = marCal.nyse as jest.Mocked<NYSEMarket>;
   });
 
   describe('marketOpen', () => {

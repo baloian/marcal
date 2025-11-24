@@ -11,11 +11,5 @@
     "outDir": "dist",
     "lib": ["ES2022"]
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "doc",
-    "tests",
-    "*.test.ts"
-  ]
+  "exclude": ["dist", "node_modules", "doc", "tests", "*.test.ts"]
 }

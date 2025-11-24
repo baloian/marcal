@@ -1,7 +1,7 @@
 import { MarketTime } from './market-time';
 import { NYTimeNow, NYTimeNowTy } from './ny-time';
 
-type CalendarTy = {[key: string]: {[key: string]: number[]}};
+type CalendarTy = { [key: string]: { [key: string]: number[] } };
 
 export interface NYSEMarket {
   readonly holidays: CalendarTy;

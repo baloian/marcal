@@ -40,7 +40,9 @@ export class MarketTime {
 
   static earlyClosed(): boolean {
     const nyNow: Date = this.currentNYTime;
-    return this.earlyCloseTime.getTime() <= nyNow.getTime() || this.openTime.getTime() > nyNow.getTime();
+    return (
+      this.earlyCloseTime.getTime() <= nyNow.getTime() || this.openTime.getTime() > nyNow.getTime()
+    );
   }
 
   static coreOpen(): boolean {
@@ -56,8 +58,13 @@ export class MarketTime {
   static afterMarket(earlyCloseDay: boolean): boolean {
     const nyNow: Date = this.currentNYTime;
     if (earlyCloseDay) {
-      return nyNow.getTime() > this.earlyCloseTime.getTime() && nyNow.getTime() < this.afterEarlyCloseTime.getTime();
+      return (
+        nyNow.getTime() > this.earlyCloseTime.getTime() &&
+        nyNow.getTime() < this.afterEarlyCloseTime.getTime()
+      );
     }
-    return nyNow.getTime() > this.closeTime.getTime() && nyNow.getTime() < this.afterCloseTime.getTime();
+    return (
+      nyNow.getTime() > this.closeTime.getTime() && nyNow.getTime() < this.afterCloseTime.getTime()
+    );
   }
 }

@@ -1,6 +1,5 @@
 import { NYSEMarket } from './nyse';
 
-
 export interface MarCal {
   readonly nyse: NYSEMarket;
   marketOpen(): boolean;
@@ -9,7 +8,6 @@ export interface MarCal {
   minutesToClose(): number;
   isHolidayOrWeekend(): boolean;
 }
-
 
 export class MarCal implements MarCal {
   readonly nyse: NYSEMarket = new NYSEMarket();
