@@ -1,6 +1,6 @@
 {
   "name": "marcal",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Exchanges Calendar for Trading Applications",
   "author": "Artiom Baloian <artiom.baloian@gmail.com>",
   "license": "MIT",
@@ -11,7 +11,8 @@
     "prepare": "npm run build",
     "start": "NODE_ENV=${NODE_ENV-production} node dist/marcal.js",
     "dev": "tsc && NODE_ENV=${NODE_ENV-development} node dist/example.js",
-    "test": "npm run build && jest"
+    "test": "npm run build && jest",
+    "format": "prettier --write \"**/*.{ts,json}\""
   },
   "files": [
     "dist",
@@ -27,14 +28,10 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.8.7",
-    "@typescript-eslint/eslint-plugin": "^5.59.11",
-    "@typescript-eslint/parser": "^5.59.11",
-    "eslint": "^8.42.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
+    "@types/node": "^24.10.1",
+    "prettier": "^3.6.2",
     "ts-jest": "^29.2.5",
-    "typescript": "^5.8.2"
+    "typescript": "^5.9.3"
   },
   "keywords": [
     "stock",
