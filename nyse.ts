@@ -17,29 +17,18 @@ export interface NYSEMarket {
 // Source: https://www.nyse.com/markets/hours-calendars
 export class NYSEMarket implements NYSEMarket {
   readonly holidays: CalendarTy = {
-    2023: {
-      January: [16],
-      February: [20],
-      April: [7],
-      May: [29],
-      June: [19],
-      July: [4],
-      September: [4],
-      November: [23],
-      December: [25]
-    },
-    2024: {
-      January: [1, 15],
-      February: [19],
-      March: [29],
-      May: [27],
-      June: [19],
-      July: [4],
-      September: [2],
-      November: [28],
-      December: [25]
-    },
     2025: {
+      January: [1, 19],
+      February: [16],
+      April: [3],
+      May: [25],
+      June: [19],
+      July: [13],
+      September: [7],
+      November: [27],
+      December: [25]
+    },
+    2026: {
       January: [1, 9, 20],
       February: [17],
       April: [18],
@@ -47,23 +36,17 @@ export class NYSEMarket implements NYSEMarket {
       June: [19],
       July: [4],
       September: [1],
-      November: [27],
+      November: [26],
       December: [25]
     }
   };
   readonly earlyCloseDays: CalendarTy = {
-    2023: {
-      July: [3],
-      November: [24]
-    },
-    2024: {
-      July: [3],
-      November: [29],
-      December: [24]
-    },
     2025: {
       July: [3],
       November: [28],
+      December: [24]
+    },
+    2026: {
       December: [24]
     }
   };
