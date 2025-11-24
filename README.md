@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/marcal.svg?label=npm%20package&color=limegreen)](https://www.npmjs.com/package/marcal)
 
 **MarCal** is a TypeScript library that provides a stock market calendar for stock trading applications.
-For now, it provides the calendar for the years `2023`, `2024` and `2025`.
+For now, it provides the calendar for the years `2025` and `2026`.
 
 Note that all major U.S. stock exchanges (NYSE, NASDAQ, and AMEX) operate on synchronized trading hours:
 - Regular Market Hours: 9:30 AM - 4:00 PM ET
