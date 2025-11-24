@@ -29,13 +29,12 @@ export class NYSEMarket implements NYSEMarket {
       December: [25]
     },
     2026: {
-      January: [1, 9, 20],
-      February: [17],
-      April: [18],
-      May: [26],
+      January: [1, 19],
+      February: [16],
+      April: [3],
+      May: [25],
       June: [19],
-      July: [4],
-      September: [1],
+      September: [7],
       November: [26],
       December: [25]
     }
@@ -47,6 +46,7 @@ export class NYSEMarket implements NYSEMarket {
       December: [24]
     },
     2026: {
+      July: [3],
       December: [24]
     }
   };
